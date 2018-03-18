@@ -28,7 +28,7 @@ function palindrome(str) {
       back--;
       continue;
     }
-    if (str[front].toLowerCase() !== str[back].toLowerCase()){
+    if (str[front].toLowerCase() !== str[back].toLowerCase()) {
       return false;
     }
     front++;
