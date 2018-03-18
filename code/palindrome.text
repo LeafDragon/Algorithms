@@ -1,0 +1,70 @@
+// JavaScript
+function palindrome(str) {
+  return str.toLowerCase().replace(/[\W_]/g, "") === 
+    str.toLowerCase().replace(/[\W_]/g, "").split("").reverse().join("");
+}
+
+function palindrome(str) {
+  str = str.toLowerCase().replace(/[\W_]/g, "");
+  const len = str.length - 1;
+  for (let i = 0; i < len/2; i++) {
+    if (str[i] !== str[len - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function palindrome(str) {
+  let front = 0;
+  let back = str.length - 1;
+  const regex = /[\W_]/g;
+  while (back > front) {
+    while (str[front].match(regex)) {
+      front++;
+      continue;
+    }
+    while (str[back].match(regex)) {
+      back--;
+      continue;
+    }
+    if (str[front].toLowerCase() !== str[back].toLowerCase()){
+      return false;
+    }
+    front++;
+    back--;
+  }
+  return true;
+}
+
+# Python
+import re
+def palindrome(string):
+    string = re.sub(r"[\W_]", "", string).lower()
+    return  string == string[::-1]
+
+import re
+def palindrome(string):
+    string = re.sub(r"[\W_]", "", string).lower()
+    length = len(string) - 1
+    for i in range(0, int(length / 2), 1):
+        if string[i] != string[length - i]:
+            return False
+    return True
+
+import re
+def palindrome(string):
+    front = 0
+    back = len(string) - 1
+    regex = re.compile("[\W_]")
+    while back > front:
+        while regex.match(string[front]):
+            front += 1
+            continue
+        while regex.match(string[back]):
+            back -= 1
+            continue
+        if string[front].lower() != string[back].lower(): return False;
+        front += 1
+        back -= 1
+    return True
